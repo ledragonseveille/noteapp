@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Répertoire des notes
+# Notes folder
 NOTES_DIR="$HOME/notes_app/notes"
 
-# Demander le titre de la note
-read -p "Titre de la note: " title
+# Ask for the note's title
+read -p "Note title: " title
 
-# Remplacer les espaces par des underscores pour le nom de fichier
+# Replace spaces by underscores for the file's name
 filename=$(echo "$title" | tr ' ' '_').md
 
-# Chemin complet du fichier de note
+# Complete path of the note file
 filepath="$NOTES_DIR/$filename"
 
-# Obtenir la date actuelle
+# Obtain current date
 current_date=$(date +"%Y-%m-%d %H:%M:%S")
 
-# Insérer l'horodatage au début du fichier de note
+# Insert the timestamp at the beginning of the note file
 echo "Date: $current_date" > "$filepath"
 
-# Ouvrir l'éditeur par défaut pour écrire la note
+# Open the default editor to write the note
 ${EDITOR:-vim} "$filepath"
 
-echo "Note ajoutée: $filepath"
+echo "Note added: $filepath"
