@@ -1,25 +1,25 @@
 #!/bin/bash
 
-# Répertoire des notes et des tags
+# Notes and tags directory
 NOTES_DIR="$HOME/notes_app/notes"
 TAGS_DIR="$HOME/notes_app/tags"
 
-# Demander le nom du tag
-read -p "Nom du tag: " tag
+# Ask for tag name
+read -p "Tag Name: " tag
 
-# Créer le répertoire du tag s'il n'existe pas
+# Create the tag directory if it doesn't exist
 mkdir -p "$TAGS_DIR/$tag"
 
-# Lister les notes disponibles
+# List available notes
 notes=($(ls "$NOTES_DIR"))
 
-# Afficher les notes et demander à l'utilisateur de sélectionner celles à taguer
-echo "Sélectionnez les notes à taguer avec '$tag':"
+# View notes and ask the user to select which ones to tag
+echo "Select the notes to tag with '$tag':"
 select note in "${notes[@]}"; do
     if [[ -n "$note" ]]; then
         ln -s "$NOTES_DIR/$note" "$TAGS_DIR/$tag/$note"
-        echo "Note '$note' taguée avec '$tag'"
+        echo "Note '$note' tagged with '$tag'"
     else
-        echo "Sélection non valide"
+        echo "Invalid selection"
     fi
 done
