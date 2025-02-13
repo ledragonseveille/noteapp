@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Répertoire des fichiers HTML
+# HTML file directory
 HTML_DIR="$HOME/notes_app/html"
 
-# Lister les fichiers HTML disponibles
+# List available HTML files
 html_files=($(ls "$HTML_DIR"))
 
-# Afficher les fichiers HTML et demander à l'utilisateur de sélectionner celui à ouvrir
-echo "Sélectionnez la note à ouvrir:"
+# View HTML files and ask the user to select which one to open
+echo "Select the note you want to open:"
 select html_file in "${html_files[@]}"; do
     if [[ -n "$html_file" ]]; then
         xdg-open "$HTML_DIR/$html_file"
-        echo "Ouverture de '$html_file'"
+        echo "Opening of '$html_file'"
     else
-        echo "Sélection non valide"
+        echo "Invalid selection"
     fi
 done
