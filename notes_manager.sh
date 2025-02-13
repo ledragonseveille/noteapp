@@ -1,33 +1,33 @@
 #!/bin/bash
 
-# Répertoire d'installation
+# Installation directory
 INSTALL_DIR="$HOME/notes_app"
 
-# Afficher l'aide
+# View Help
 function show_help {
     echo "Usage: $0 [option]"
     echo "Options:"
-    echo "  -a, --add          Ajouter une nouvelle note"
-    echo "  -o, --organize     Organiser les notes avec des tags"
-    echo "  -c, --convert      Convertir les notes en HTML"
-    echo "  -n, --navigate     Naviguer dans les notes HTML"
-    echo "  -t, --tag          Afficher les fichiers correspondant à un tag donné"
-    echo "  -h, --help         Afficher cette aide"
+    echo "  -a, --add          Add a new note"
+    echo "  -o, --organize     Organize notes with tags"
+    echo "  -c, --convert      Convert notes to HTML"
+    echo "  -n, --navigate     Navigate HTML notes"
+    echo "  -t, --tag          View files that match a given tag"
+    echo "  -h, --help         View this help"
 }
 
-# Afficher les fichiers correspondant à un tag donné
+# View files that match a given tag
 function list_files_by_tag {
-    read -p "Nom du tag: " tag
+    read -p "Tag Name: " tag
     TAG_DIR="$INSTALL_DIR/tags/$tag"
     if [ -d "$TAG_DIR" ]; then
-        echo "Fichiers tagués avec '$tag':"
+        echo "Files tagged with '$tag':"
         ls "$TAG_DIR"
     else
-        echo "Aucun fichier trouvé pour le tag '$tag'"
+        echo "No files found for the tag '$tag'"
     fi
 }
 
-# Vérifier les options
+# Check Options
 case "$1" in
     -a|--add)
         "$INSTALL_DIR/add_note.sh"
